@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
+		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
+	</head>
+	<body>
+		<a-scene
+			mindar-image="imageTargetSrc: /assets/targets.mind;"
+			color-space="sRGB"
+			renderer="colorManagement: true, physicallyCorrectLights"
+			vr-mode-ui="enabled: false"
+			device-orientation-permission-ui="enabled: false"
+		>
+			<a-assets>
+				<img id="web" src="/assets/icons/twit.png" alt="talbat" />
+				<img id="instagram" src="/assets/icons/insta.png" alt="instagram" />
+				<img id="phone" src="/assets/icons/call.png" alt="phone" />
+				<img id="ARmenu-1" src="/assets/images/ARmenu-1.png" alt="ARmenu-1" />
+				<img id="card_reference" src="/assets/images/ARmenu-1.png" alt="" />
+			</a-assets>
+			<a-camera
+				position="0 0 0"
+				look-controls="enabled: false"
+				cursor="fuse: false; rayOrigin: mouse;"
+				raycaster="far: 10000; objects: .clickable"
+			></a-camera>
+
+			<a-entity mindar-image-target="targetIndex: 0" visible="">
+				<a-image
+					rotation="0 0 0"
+					position="0.0 0.1 0"
+					scale="2.0 2.25 2.0"
+					src="#ARmenu-1"
+					material="opacity: 0.7;"
+				></a-image>
+				<a-image
+					rotation="0 0 0"
+					position="0.0 0.1 0.02"
+					scale="2.0 2.25 2.0"
+					src="#card_reference"
+				></a-image>
+				<a-entity> </a-entity>
+				<a-entity>
+					<a-entity>
+						<!-- Instagram -->
+						<a-image
+							visible="true"
+							class="clickable"
+							position="0.64 -0.12 0.07"
+							onClick="window.open('https://www.instagram.com/beyin.me/');"
+							src="#instagram"
+							height="0.15"
+							width="0.15"
+							id="instagram-button"
+						></a-image>
+						<!-- Phone -->
+						<a-image
+							visible="true"
+							class="clickable"
+							position="0.64 -0.5 0.05"
+							onClick="window.open('tel:+971 56 550 6559')"
+							src="#phone"
+							height="0.5"
+							width="0.15"
+							id="phone-button"
+						></a-image>
+						<!-- web talbat -->
+
+						<a-image
+							visible="true"
+							class="clickable"
+							position="0.64 0.06 0.05"
+							onClick="window.open('https://www.talabat.com/uae')"
+							src="#web"
+							height="0.15"
+							width="0.15"
+							id="web-button"
+						></a-image>
+					</a-entity>
+				</a-entity>
+			</a-entity>
+		</a-scene>
+	
+	</body>
+</html>
